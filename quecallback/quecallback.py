@@ -76,19 +76,19 @@ if __name__ == '__main__':
     some_class = SomeClass()
     q = queue.Queue()
     qfc = QueuedCallback(q,
-                           tertiary=some_class,
-                           callback=some_callback
-                           )
+                         tertiary=some_class,
+                         callback=some_callback
+                         )
     qfc.start(block=False)
 
-    job = {'uid': 123456789,
-           'function': 'function_to_call',
-           'kwargs': {
-               'some_args': 'Hello',
-               'some_more_args': 'Goodbye'
-               }
-           }
-    q.put(job)
+    jb = {'uid': 123456789,
+          'function': 'function_to_call',
+          'kwargs': {
+              'some_args': 'Hello',
+              'some_more_args': 'Goodbye'
+              }
+          }
+    q.put(jb)
 
     time.sleep(3)
     qfc.stop()
